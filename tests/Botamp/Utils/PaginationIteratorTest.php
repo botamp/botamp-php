@@ -80,9 +80,6 @@ class PaginationIteratorTest extends TestCase
 
     }
 
-    /**
-     * @covers PaginationIterator::getNextPage
-     */
     public function testShouldGetNextPage()
     {
         $httpClient = $this->getHttpMethodsMock(array('get'));
@@ -107,7 +104,6 @@ class PaginationIteratorTest extends TestCase
     }
 
     /**
-     * covers PaginationIterator::getNextPage
      * @depends testShouldGetNextPage
      */
     public function testShouldGetFalseIfNoNextPage($getNextPageMethod)
@@ -120,9 +116,6 @@ class PaginationIteratorTest extends TestCase
         $this->assertEquals(false, $getNextPageMethod->invoke($paginationIterator));
     }
 
-    /**
-     * @covers PaginationIterator::getNextPageParams
-     */
     public function testShouldGetNextPageParams()
     {
         $expectedArray = ['page[number]' => 2, 'page[size]' => 3];
@@ -132,7 +125,6 @@ class PaginationIteratorTest extends TestCase
     }
 
     /**
-     * @covers PaginationIterator::getNextPageParams
      * @depends testShouldGetNextPageParams
      */
     public function testShouldGetFalseIfNoNextPageParams($getNextPageParamsMethod)

@@ -21,7 +21,6 @@ class ApiRequestorTest extends TestCase
     }
 
     /**
-    * @covers ApiRequestor::serializeUrl
     * @dataProvider pageParamsProvider
     */
     public function testShouldSerializeUrlWithPageParams($params, $query_params)
@@ -31,9 +30,6 @@ class ApiRequestorTest extends TestCase
         $this->assertEquals($url, $serializeUrlMethod->invokeArgs($this->apiRequestor, [$params]));
     }
 
-    /**
-    * @covers ApiRequestor::serializeBody
-    */
     public function testShouldSerializeBody()
     {
         $serializeBodyMethod = TestCase::getMethod('\Botamp\Api\ApiRequestor', 'serializeBody');
@@ -47,7 +43,6 @@ class ApiRequestorTest extends TestCase
     }
 
     /**
-    * @covers ApiRequestor::serializeBody
     * @depends testShouldSerializeBody
     */
     public function testShouldSerializeBodyWithId($serializeBodyMethod)

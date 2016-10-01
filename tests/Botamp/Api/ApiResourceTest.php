@@ -25,9 +25,6 @@ class ApiResourceTest extends TestCase
         $this->assertAttributeEquals($apiRequestor, 'apiRequestor', $entities);
     }
 
-    /**
-     * @covers ApiResource::all
-     */
     public function testShouldPassAllActionToClient()
     {
         $body =  [ 'data' => [ [ 'id' => 1, 'type' => 'entities', 'attributes' => ['url' => 'my/url'] ] ] ];
@@ -49,10 +46,6 @@ class ApiResourceTest extends TestCase
         $this->assertEquals(new BotampObject($body, $entities), $entities->all());
     }
 
-
-    /**
-     * @covers ApiResource::all
-     */
     public function testShouldPassAllActionToClientWithPageParams()
     {
         $body =  [ 'data' => [ 'id' => 1, 'type' => 'entities', 'attributes' => ['url' => 'my/url'] ] ];
@@ -74,10 +67,6 @@ class ApiResourceTest extends TestCase
         $this->assertEquals(new BotampObject($body, $entities), $entities->all(['page[number]'=>1, 'page[size]'=>1]));
     }
 
-
-    /**
-     * @covers ApiResource::get
-     */
     public function testShouldPassGetActionToClient()
     {
         $body =  [ 'data' => [ 'id' => 1, 'type' => 'entities', 'attributes' => ['url' => 'my/url'] ] ];
@@ -99,10 +88,6 @@ class ApiResourceTest extends TestCase
         $this->assertEquals(new BotampObject($body, $entities), $entities->get(1));
     }
 
-
-    /**
-     * @covers ApiResource::create
-     */
     public function testShouldPassCreateActionToClient()
     {
         $params = ['url' => 'my/url'];
@@ -127,10 +112,6 @@ class ApiResourceTest extends TestCase
         $this->assertEquals(new BotampObject($body, $entities), $entities->create($params));
     }
 
-
-    /**
-     * @covers ApiResource::update
-     */
     public function testShouldPassUpdateActionToClient()
     {
         $params = ['url' => 'my/url'];
@@ -155,10 +136,6 @@ class ApiResourceTest extends TestCase
         $this->assertEquals(new BotampObject($body, $entities), $entities->update(1, $params));
     }
 
-
-    /**
-     * @covers ApiResource::delete
-     */
     public function testShouldPassDeleteActionToClient()
     {
         $httpClient = $this->getHttpMethodsMock(array('delete'));

@@ -20,9 +20,6 @@ class ApiResponseTest extends TestCase
         $this->httpCodes = $this->getHttpCodes();
     }
 
-    /**
-     * @covers ApiResponse::unserialize
-     */
     public function testShouldUnserialize()
     {
         $body = array('foo' => 'bar');
@@ -34,9 +31,6 @@ class ApiResponseTest extends TestCase
         $this->assertEquals($body, ApiResponseInstance::unserialize($response));
     }
 
-    /**
-     * @covers ApiResponse::extractErrors
-     */
     public function test_ShouldExtractErrors()
     {
         $body = array('errors' => [
@@ -49,9 +43,6 @@ class ApiResponseTest extends TestCase
         $this->assertEquals($expectedDetails, ApiResponseInstance::extractErrors($body));
     }
 
-    /**
-     * @covers ApiResponse::getContent
-     */
     public function testShouldGetContent()
     {
         $body =  ['data' => ['id' => 1, 'type' => 'entities', 'attributes' => array('url' => 'my/url')]];
@@ -65,7 +56,6 @@ class ApiResponseTest extends TestCase
     }
 
     /**
-     * @covers ApiResponse::getContent
      * @expectedException Botamp\Exceptions\NotAcceptable
      * @expectedExceptionMessage The request content type must be set to application/vnd.api+json.
      */
@@ -81,7 +71,6 @@ class ApiResponseTest extends TestCase
     }
 
     /**
-     * @covers ApiResponse::getContent
      * @expectedException Botamp\Exceptions\NotFound
      * @expectedExceptionMessage The resource doesn't exist.
      */
@@ -97,7 +86,6 @@ class ApiResponseTest extends TestCase
     }
 
     /**
-     * @covers ApiResponse::getContent
      * @expectedException Botamp\Exceptions\Unauthorized
      * @expectedExceptionMessage No valid API key provided.
      */
@@ -113,7 +101,6 @@ class ApiResponseTest extends TestCase
     }
 
     /**
-     * @covers ApiResponse::getContent
      * @expectedException Botamp\Exceptions\TooManyRequests
      * @expectedExceptionMessage API rate limit exceeded. Please try again in an hour.
      */
@@ -129,7 +116,6 @@ class ApiResponseTest extends TestCase
     }
 
     /**
-     * @covers ApiResponse::getContent
      * @expectedException Botamp\Exceptions\UnprocessableEntity
      * @expectedExceptionMessage The request could not be processed. FIRST first details.
      */
@@ -148,7 +134,6 @@ class ApiResponseTest extends TestCase
     }
 
     /**
-     * @covers ApiResponse::getContent
      * @expectedException Botamp\Exceptions\Base
      * @expectedExceptionMessage Unexpected error.
      */

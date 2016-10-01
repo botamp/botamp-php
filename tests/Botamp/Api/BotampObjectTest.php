@@ -36,17 +36,11 @@ class BotampObjectTest extends TestCase
         $this->assertEquals(count($this->body['data']), $position);
     }
 
-    /**
-     * @covers Collection::getBody
-     */
     public function testShouldGetBody()
     {
         $this->assertEquals($this->body, $this->botampObject->getBody());
     }
 
-    /**
-     * @covers Collection::paginationIterator
-     */
     public function testShouldReturnInstanceOfPaginationIterator()
     {
         $paginationIterator =  $this->botampObject->paginationIterator();
