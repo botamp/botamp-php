@@ -32,7 +32,7 @@ require_once('vendor/autoload.php');
 Here goes a simple usage:
 
 ```php
-$botamp = new Client(YOUR_API_KEY);
+$botamp = new Botamp\Client(YOUR_API_KEY);
 $entities = $botamp->entities->all();
 
 foreach($entities as $entity)
