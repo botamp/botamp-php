@@ -23,8 +23,6 @@ class Client
 {
     private $httpClient;
 
-    private $messageFactory;
-
     private $apiKey;
 
     private $apiBase = 'https://app.botamp.com/api';

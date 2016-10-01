@@ -23,29 +23,26 @@ abstract class ApiResponse
 
         if(in_array($status, [ $httpRes['ok'], $httpRes['created'], $httpRes['noContent'] ]))
             return $body;
-        else
+        switch($status)
         {
-            switch($status)
-            {
-                case $httpRes['unauthorized']:
-                    throw new Exceptions\Unauthorized();
-                    break;
-                case $httpRes['notFound']:
-                    throw new Exceptions\NotFound();
-                    break;
-                case $httpRes['notAcceptable']:
-                    throw new Exceptions\NotAcceptable();
-                    break;
-                case $httpRes['unprocessableEntity']:
-                    throw new Exceptions\UnprocessableEntity(self::extractErrors($body));
-                    break;
-                case $httpRes['tooManyRequests']:
-                    throw new Exceptions\TooManyRequests();
-                    break;
-                default:
-                    throw new Exceptions\Base("Unexpected error.");
-                    break;
-            }
+            case $httpRes['unauthorized']:
+                throw new Exceptions\Unauthorized();
+                break;
+            case $httpRes['notFound']:
+                throw new Exceptions\NotFound();
+                break;
+            case $httpRes['notAcceptable']:
+                throw new Exceptions\NotAcceptable();
+                break;
+            case $httpRes['unprocessableEntity']:
+                throw new Exceptions\UnprocessableEntity(self::extractErrors($body));
+                break;
+            case $httpRes['tooManyRequests']:
+                throw new Exceptions\TooManyRequests();
+                break;
+            default:
+                throw new Exceptions\Base("Unexpected error.");
+                break;
         }
     }
 

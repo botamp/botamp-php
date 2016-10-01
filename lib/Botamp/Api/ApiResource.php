@@ -14,7 +14,6 @@ use Botamp\Client;
 class ApiResource
 {
     private $apiRequestor;
-    private $resourceName;
 
     public function __construct($resourceName, Client $client)
     {
