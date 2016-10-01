@@ -5,4 +5,9 @@ php:
   - 7.0
   - hhvm
 
-script: composer install
+script:
+  - composer install
+  - phpunit
+
+after_success:
+  - php vendor/bin/coveralls -v
