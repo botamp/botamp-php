@@ -51,6 +51,13 @@ class PaginationIteratorTest extends TestCase
         $this->paginationIterator = (new BotampObject($this->body, $entities))->paginationIterator();
     }
 
+    public function testShouldGetCurrentKey()
+    {
+        $this->assertEquals(0, $this->paginationIterator->key());
+        $this->paginationIterator->next();
+        $this->assertEquals(1, $this->paginationIterator->key());
+    }
+
     public function testShouldAutoPaginate()
     {
         $httpClient = $this->getHttpMethodsMock(array('get'));
