@@ -48,14 +48,7 @@ abstract class ApiResponse
 
     protected static function unserialize(ResponseInterface $response)
     {
-        try
-        {
-            return json_decode($response->getBody(true), true);
-        }
-        catch(\Exception $e)
-        {
-            throw new Exceptions\Base("Unexpected error. ".$e->getMessage());
-        }
+        return json_decode($response->getBody(true), true);
     }
 
     protected static function extractErrors($body)
