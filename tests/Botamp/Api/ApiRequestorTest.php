@@ -21,6 +21,15 @@ class ApiRequestorTest extends TestCase
     }
 
     /**
+     * @expectedException Botamp\Exceptions\Base
+     * @expectedExceptionMessage Unexpected error. Unknown action 'badaction'.
+     */
+    public function testShouldThrowExceptionIfUnknownAction()
+    {
+        $this->apiRequestor->send('badAction');
+    }
+
+    /**
     * @dataProvider pageParamsProvider
     */
     public function testShouldSerializeUrlWithPageParams($params, $query_params)

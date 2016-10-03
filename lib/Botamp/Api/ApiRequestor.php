@@ -3,6 +3,7 @@
 namespace Botamp\Api;
 
 use Botamp\Client;
+use Botamp\Exceptions;
 
 /**
  * Class ApiRequestor
@@ -41,7 +42,8 @@ class ApiRequestor
             case 'delete':
                 return $this->httpClient->delete($this->url."/{$params['id']}");
             default:
-                return null;
+                throw new Exceptions\Base("Unexpected error. Unknown action '$action'.");
+                break;
         }
     }
 
