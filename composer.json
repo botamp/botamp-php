@@ -32,6 +32,6 @@
     "satooshi/php-coveralls": "~1.0"
   },
   "autoload": {
-    "psr-4": { "Botamp\\" : "lib/" }
+    "psr-4": { "Botamp\\" : "lib/Botamp/" }
   }
 }
