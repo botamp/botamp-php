@@ -2,8 +2,6 @@
 
 namespace Botamp;
 
-require __DIR__ . '/../../vendor/autoload.php';
-
 use Botamp\Api\ApiResource;
 use Botamp\Exceptions;
 use Http\Client\Common;
