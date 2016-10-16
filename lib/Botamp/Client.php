@@ -37,7 +37,7 @@ class Client
 
         $this->setHttpClient($httpClient ?: HttpClientDiscovery::find(), MessageFactoryDiscovery::find());
 
-        $this->entities = new ApiResource('entities', $this);
+        $this->bindResources();
     }
 
     public function getHttpClient()
@@ -53,6 +53,7 @@ class Client
     public function setApiBase($apiBase)
     {
         $this->apiBase = $apiBase;
+        $this->bindResources();
     }
 
     public function getApiBase()
@@ -68,6 +69,8 @@ class Client
             throw new Exceptions\Base("No valid api version provided.");
         else
             $this->apiVersion = $apiVersion;
+
+        $this->bindResources();
     }
 
     public function getApiVersion()
@@ -83,5 +86,10 @@ class Client
         ];
 
         $this->httpClient = new Common\HttpMethodsClient(new Common\PluginClient($httpClient, $plugins), $messageFactory);
+    }
+
+    private function bindResources()
+    {
+        $this->entities = new ApiResource('entities', $this);
     }
 }
