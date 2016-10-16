@@ -33,9 +33,9 @@ class Client
 
     public function __construct($apiKey, HttpClient $httpClient = null)
     {
-        $this->setHttpClient($httpClient ?: HttpClientDiscovery::find(), MessageFactoryDiscovery::find());
-
         $this->apiKey = $apiKey;
+
+        $this->setHttpClient($httpClient ?: HttpClientDiscovery::find(), MessageFactoryDiscovery::find());
 
         $this->entities = new ApiResource('entities', $this);
     }
