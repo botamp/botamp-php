@@ -7,6 +7,8 @@
 [![Total Downloads](https://poser.pugx.org/botamp/botamp-php/downloads)](https://packagist.org/packages/botamp/botamp-php)
 [![License](https://poser.pugx.org/botamp/botamp-php/license)](https://packagist.org/packages/botamp/botamp-php)
 
+Botamp is an autonomous AI-enabled chat assistant which interacts seamlessly with your customers, keeps them engaged and makes them buy more from you, while you can focus on serving them.
+
 You can sign up for a Botamp account at https://botamp.com.
 
 ## Requirements
