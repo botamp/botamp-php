@@ -3,6 +3,7 @@
 namespace Botamp;
 
 use Botamp\Api\ApiResource;
+use Botamp\Api\ApiResponse;
 use Botamp\Exceptions;
 use Http\Client\Common;
 use Http\Client\Common\Plugin;
@@ -76,6 +77,12 @@ class Client
     public function getApiVersion()
     {
         return $this->apiVersion;
+    }
+
+    public function getAttributes()
+    {
+        $url = $this->getApiBase().'/'.$this->getApiVersion().'/me';
+        return ApiResponse::getContent($this->getHttpClient()->get($url));
     }
 
     private function setHttpClient(HttpClient $httpClient, MessageFactory $messageFactory)

@@ -56,6 +56,26 @@ class ClientTest extends TestCase
         $this->assertEquals(strtolower($apiVersion), $this->client->getApiVersion());
     }
 
+    public function testShouldGetAttributes()
+    {
+        $attributes =  ['page_id' => '123456', 'page_access_token' => 'A123456Z'];
+        $url = 'https://app.botamp.com/api/v1/me';
+
+        $httpClient = $this->getHttpMethodsMock(array('get'));
+        $httpClient
+            ->expects($this->any())
+            ->method('get')
+            ->with($url, array())
+            ->will($this->returnValue($this->getPSR7Response($attributes)));
+
+        $client = $this->getMock('Botamp\Client', array('getHttpClient'), array('123456789'));
+        $client->expects($this->any())
+            ->method('getHttpClient')
+            ->willReturn($httpClient);
+
+        $this->assertEquals($attributes, $client->getAttributes());
+    }
+
     /**
      * @expectedException Botamp\Exceptions\Base
      * @expectedExceptionMessage No valid api version provided.
