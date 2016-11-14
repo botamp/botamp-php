@@ -79,7 +79,7 @@ class Client
         return $this->apiVersion;
     }
 
-    public function getAttributes()
+    public function getPageAttributes()
     {
         $url = $this->getApiBase().'/'.$this->getApiVersion().'/me';
         return ApiResponse::getContent($this->getHttpClient()->get($url));

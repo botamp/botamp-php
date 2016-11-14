@@ -56,7 +56,7 @@ class ClientTest extends TestCase
         $this->assertEquals(strtolower($apiVersion), $this->client->getApiVersion());
     }
 
-    public function testShouldGetAttributes()
+    public function testShouldGetPageAttributes()
     {
         $attributes =  ['page_id' => '123456', 'page_access_token' => 'A123456Z'];
         $url = 'https://app.botamp.com/api/v1/me';
@@ -73,7 +73,7 @@ class ClientTest extends TestCase
             ->method('getHttpClient')
             ->willReturn($httpClient);
 
-        $this->assertEquals($attributes, $client->getAttributes());
+        $this->assertEquals($attributes, $client->getPageAttributes());
     }
 
     /**
