@@ -85,6 +85,12 @@ class Client
         return ApiResponse::getContent($this->getHttpClient()->get($url));
     }
 
+    public function whitelistForMessenger($domain)
+    {
+        $url = $this->getApiBase().'/'.$this->getApiVersion().'/me?domain='.$domain;
+        return ApiResponse::getContent($this->getHttpClient()->get($url));
+    }
+
     private function setHttpClient(HttpClient $httpClient, MessageFactory $messageFactory)
     {
         $plugins = [
