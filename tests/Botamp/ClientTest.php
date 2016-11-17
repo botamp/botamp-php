@@ -76,26 +76,6 @@ class ClientTest extends TestCase
         $this->assertEquals($attributes, $client->getPageAttributes());
     }
 
-    public function testShouldwhitelistForMessenger(){
-      $domain = 'http://example.com';
-      $url = 'https://app.botamp.com/api/v1/me?domain='.$domain;
-      $response = ['status' =>'200', 'body'=> 'Successfully updated whitelisted domains'];
-
-      $httpClient = $this->getHttpMethodsMock(array('get'));
-      $httpClient
-          ->expects($this->any())
-          ->method('get')
-          ->with($url, array())
-          ->will($this->returnValue($this->getPSR7Response($response)));
-
-      $client = $this->getMock('Botamp\Client', array('getHttpClient'), array('123456789'));
-      $client->expects($this->any())
-          ->method('getHttpClient')
-          ->willReturn($httpClient);
-
-      $this->assertEquals($response, $client->whitelistForMessenger($domain));
-    }
-
     /**
      * @expectedException Botamp\Exceptions\Base
      * @expectedExceptionMessage No valid api version provided.
