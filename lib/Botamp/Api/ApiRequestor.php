@@ -34,7 +34,7 @@ class ApiRequestor
             case 'all':
                 return $this->httpClient->get($this->serializeUrl($params));
             case 'get':
-                return $this->httpClient->get($this->url."/{$params['id']}");
+                return $this->httpClient->get($this->url.($id !== null ? "/{$params['id']}" : ''));
             case 'create':
                 return $this->httpClient->post($this->url, [], $this->serializeBody($params));
             case 'update':
