@@ -3,7 +3,6 @@
 namespace Botamp;
 
 use Botamp\Api\ApiResource;
-use Botamp\Api\Me;
 use Botamp\Api\ApiResponse;
 use Botamp\Exceptions;
 use Http\Client\Common;
@@ -34,6 +33,8 @@ class Client
     public $entities;
 
     public $me;
+
+    public $subscriptions;
 
     public function __construct($apiKey, HttpClient $httpClient = null)
     {
@@ -95,6 +96,7 @@ class Client
     private function bindResources()
     {
         $this->entities = new ApiResource('entities', $this);
-        $this->me = new Me($this);
+        $this->me = new ApiResource('me', $this);
+        $this->subscriptions = new ApiResource('subscriptions', $this);
     }
 }

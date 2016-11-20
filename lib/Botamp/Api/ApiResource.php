@@ -26,7 +26,7 @@ class ApiResource
         return new BotampObject(ApiResponse::getContent($response), $this);
     }
 
-    public function get($id)
+    public function get($id = null)
     {
         $response = $this->apiRequestor->send('get', ['id' => $id]);
         return new BotampObject(ApiResponse::getContent($response), $this);
