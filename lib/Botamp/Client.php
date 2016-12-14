@@ -36,6 +36,8 @@ class Client
 
     public $subscriptions;
 
+    public $contacts;
+
     public function __construct($apiKey, HttpClient $httpClient = null)
     {
         $this->apiKey = $apiKey;
@@ -98,5 +100,6 @@ class Client
         $this->entities = new ApiResource('entities', $this);
         $this->me = new ApiResource('me', $this);
         $this->subscriptions = new ApiResource('subscriptions', $this);
+        $this->contacts = new ApiResource('contacts', $this);
     }
 }
